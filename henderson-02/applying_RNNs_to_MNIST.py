@@ -23,7 +23,7 @@ print("Test Labels", testlabels.shape)
 
 n_input = 28 # MNIST data input (img shape: 28*28)
 n_steps = 28 # timesteps
-n_hidden = 1024 # hidden layer num of features
+n_hidden = 16 # hidden layer num of features
 n_classes = 10 # MNIST total classses (0-9 digits)
 
 #learning_rate = 0.001
