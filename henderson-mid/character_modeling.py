@@ -181,7 +181,7 @@ class LSTMModel():
     def __init__(self,sample=False):
         rnn_size = 32 # size of RNN hidden state vector
         batch_size = 60 # minibatch size, i.e. size of dataset in each epoch
-        seq_length = 50 # RNN sequence length
+        seq_length = 25 # RNN sequence length
         num_layers = 2 # number of layers in the RNN
         vocab_size = 65
         grad_clip = 5.
