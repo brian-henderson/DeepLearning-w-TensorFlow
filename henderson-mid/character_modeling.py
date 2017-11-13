@@ -13,7 +13,7 @@ class TextLoader():
         self.seq_length = seq_length
         self.encoding = encoding
 
-        input_file = os.path.join(data_dir, "input.txt")
+        input_file = os.path.join(data_dir, "trump_tweets.txt")
         vocab_file = os.path.join(data_dir, "vocab.pkl")
         tensor_file = os.path.join(data_dir, "data.npy")
 
@@ -71,15 +71,15 @@ class TextLoader():
     def reset_batch_pointer(self):
         self.pointer = 0
 
-seq_length = 25 # RNN sequence length
+seq_length = 50 # RNN sequence length
 batch_size = 60  # minibatch size, i.e. size of data in each epoch
 num_epochs = 125 # you should increase it if you want to see relatively good results
 learning_rate = 0.002
 decay_rate = 0.97
-rnn_size = 32 # size of RNN hidden state (output dimension)
+rnn_size = 128 # size of RNN hidden state (output dimension)
 num_layers = 2 #number of layers in the RNN
 
-with open('input.txt', 'r') as f:
+with open('trump_tweets.txt', 'r') as f:
     read_data = f.read()
     print (read_data[0:200])
 f.closed
@@ -179,9 +179,9 @@ tvars
 
 class LSTMModel():
     def __init__(self,sample=False):
-        rnn_size = 32 # size of RNN hidden state vector
+        rnn_size = 128 # size of RNN hidden state vector
         batch_size = 60 # minibatch size, i.e. size of dataset in each epoch
-        seq_length = 25 # RNN sequence length
+        seq_length = 50 # RNN sequence length
         num_layers = 2 # number of layers in the RNN
         vocab_size = 65
         grad_clip = 5.

@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+\usepackage[letterpaper, margin=1in]{geometry} % page format
+\usepackage{listings} % this package is for including code
+\usepackage{graphicx} % this package is for including figures
+\usepackage{amsmath}  % this package is for math and matrices
+\usepackage{amsfonts} % this package is for math fonts
+\usepackage{tikz} % for drawings
+\usepackage{hyperref} % for urls
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\title{Project Milestone}
+\author{Sami Ellougani and Brian Henderson}
+\date{11/10/17}
+
+\begin{document}
+\lstset{language=Python}
+
+\maketitle
+
+\section{Introduction}
+This semester, we took on the challenge of learning how Deep Neural Networks work by delving deep into the implementation of an Artistic Style Transfer. An Artistic Style Transfer takes the style of one photo,
+and puts it over another photo with the same artistic style. 
+
+\begin{center}
+  \includegraphics[height=75mm]{milestone_example.png}
+\end{center}
+
+Humans have mastered the skill to create unique visual experiences through composing a complex interplay between the content and style of an image.[2]
+This seems like an almost impossible task to take a style from one photo to another, but to achieve this we will be using convolution neural networks to train styles. 
+We've decided to apply the style transfer in real time, which will involve training networks with a designated style. We will use several resources as guides on how to begin TensorFlow implementation. Our objective is letting a user have the ability to upload upload various influential, abstract, and unique styles from different historical and modern time periods, select a preloaded style, and produce the output.
+
+\section{Experiment 00}
+ Using Logan Engstrom's (a professor at the Massachusetts Institute of Technology) framework on fast artistic style tranfer[1], we were able to modify the weights and succesfully 
+ style an image. For the base experiment, we used a picture of the Marist College Hancock Center and applied the style of Francis Picabia's Udnie painting, an oil based painting from
+ 1913. The experiment invovled running the style.py script, supplying a style, a test image, and weights. The following weight's were used:
+
+\begin{center}
+\begin{tabular}{l*{8}{c}r}
+Epochs & Batch Size & Checkpoint Iterations & Content Weight & Style Weight & Learning Rate \\
+\hline
+03	& 04 & 2000 & 7.5e0 & 1e2 & 1e-3 \\
+\end{tabular}
+
+\includegraphics[height=40mm]{udnie.jpg}
+\captionof{figure}{Udnie Style}
+\end{center}
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height = 40mm]{hancock.jpg}
+  \captionof{figure}{Marist College Hancock Center}
+  \label{fig:1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height = 40mm]{0_2000.png}
+  \captionof{figure}{Epoch 0, Iteration 2000}
+  \label{fig:3}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+ \centering
+  \includegraphics[height = 40mm]{1_8000.png}
+  \captionof{figure}{Epoch 1, Iteration 8000}
+  \label{fig:2}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height = 40mm]{2_20695.png}
+  \captionof{figure}{Epoch 2, Iteration 20695, Finished Result}
+  \label{fig:4}
+\end{minipage}
+\end{figure}
+
+As seen by the progression of the checkpoint images, the artistic style was applied more elouqently to the base Hancock Center photo throughout the experiment. One noticeable interpratation at this time is the large difference in Figure 3 and Figure 4, but the less noticable difference from Figure 4 to Figure 5. This observation will be valuable when considering different weights for the next experiment. 
+
+\section{Future}
+We are going to continue to use other photos and artistic style combinations to test this TensorFlow implementation. As we continue to use other photos, we are going to take the time to adjust the different parameters (such as the weights ) to get the most defined images. Also, we are going to delve deeper into the Neural Network to truly get a grasp of how the possibility of Artistic Style Transfer becomes realistic.
+\\
+\\
+\section{Sources}
+\href{https://shafeentejani.github.io/2017-01-03/fast-style-transfer/}{TensorFlow CNN for fast style transfer} \\
+	1  Logan Engstrom. \\ \\
+\href{https://arxiv.org/abs/1508.06576}{A Neural Algorithm of Artistic Style} \\
+	2 Leon A. Gatys, Alexander S. Ecker, Matthias Bethge.
+
+\end{document}
