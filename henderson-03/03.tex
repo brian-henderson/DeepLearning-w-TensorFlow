@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Homework 03}
+\author{Brian Henderson}
+\date{11/27/17}
+
+\begin{document}
+\maketitle
+\section{Part One}
+Using tien.py, complete a total of 10 experiments varying the number of hidden units in three layers. For these experiments, the auto-encoder uses 400 for the pre-training epochs and 50 for the fine-tuning epochs. Note** These experiments were meant to use "Our Dataset," but I was unable to get the auto-encoder to use it, so these experiments were run using the MNIST dataset.
+
+\subsection{Results}
+\begin{table}[h]
+ \caption{Testing accuracies of various hidden unit combinations}
+ \label{table}
+ \begin{center}
+  \begin{tabular}{c|c}
+    \hline \hline
+    Neuron Combination & Final Testing Accuracy \\
+    \hline
+    $32  \times 32  \times 32 $ &  0.8023 \\
+    $64  \times 32  \times 64 $ & 0.8906 \\
+    $32  \times 64  \times 128$ & 0.8553\\
+    $64  \times 128 \times 256$ & 0.8275 \\
+    $32  \times 128 \times 256$ & 0.9024 \\
+    $64  \times 256 \times 32 $ & 0.8911\\
+    $32  \times 256 \times 512$ & 0.8497 \\
+    $64  \times 256 \times 512$ & 0.9184 \\
+    $256 \times 128 \times 512$ & 0.9402 \\
+    $512 \times 128 \times 64 $ & 0.9300
+  \end{tabular}
+ \end{center}
+\end{table}
+
+\subsection{Analysis}
+The neuron combination of \texttt{256x128x512} had the highest final testing accuracy of \texttt{0.9402}. There is a clear trend that the experiments that had more neurons for each layer had higher final testing accuracies. This is expected from my point of view, since the experiments did take longer which (in a proper architecture) typically indicates higher quality results. Since there is a noticeable jump in testing accuracy with the larger neurons (experiment 00: 0.8032 vs. experiment 08: 0.9402, difference: .1379), this leads me to think that this architecture does very well with larger neuron combinations.
+
+\newpage
+\section{Part Two}
+The neuron combination that had the best results from the previous set of experiments was \texttt{256x128x512}. The learning rate used for part one was \texttt{1.0}. The following experiments will modify that to \texttt{0.01}, \texttt{0.001}, and \texttt{0.0001}.
+
+\subsection{Results}
+\begin{table}[h]
+ \caption{Testing accuracies for various learning rates using a constant neuron combination of \texttt{256x128x512}}
+ \label{table}
+ \begin{center}
+  \begin{tabular}{c|c}
+    \hline \hline
+    Learning Rate & Final Testing Accuracy \\
+    \hline
+     $ 0.01   $ & $ .6615 $ \\
+     $ 0.001  $ & $ .2259 $ \\
+     $ 0.0001 $ & $ .1123 $
+  \end{tabular}
+ \end{center}
+\end{table}
+
+\subsection{Analysis}
+There is a significant decrease in the final accuracy rating with the smaller learning rates. This could be because of a number of different reasons, however since this architecture worked very well with a learning rate of \texttt{1.0}, this leads me to possibly believe that this architecture was designed with that in respect. Also with a lower learning rate, this indicates that the neural network would take longer to train.
+
+\section{Input on "Our Dataset"}
+Although I was not able to use "Our Dataset" for these experiments, I do have some input on what I believe the results would have been if I did. If the experiments were run using "Our Dataset", I would hypothesize that the testing accuracies and ratings would be significantly lower than the ones that were produced in these experiments. Since the MNIST dataset is very professionally equipped and prepared, the auto-encoder had a much more successful time with it. "Our Dataset" was also much smaller than the MNIST dataset, leaving me to believe that the auto-encoder would not have been able to produce as quality output. I believe that the lower learning rate trend with the lower testing accuracy would still have occurred, and that the neuron combination of \texttt{256x128x512} would still have been the highest quality.
+
+\end{document}
